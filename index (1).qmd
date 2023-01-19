@@ -1,0 +1,156 @@
+---
+title: "Melihat hubungan ekspor dan nilai tukar"
+subtitle: "Analisis Pengaruh Ekspor Lada Hitam Ke Negara Amerika Serikat Terhadap Nilai Tukar Rupiah Pada Tahun 2012-2021"
+author: "Naufal Faturrahman"
+date: 2023-01-2
+number-sections: true
+format:
+  html: default
+  docx: default
+editor: visual
+---
+
+![](poltekapp%20(1).jpg)
+
+## Pendahuluan
+
+### Latar belakang
+
+Pada Peraturan Pemerintah Nomor 10 Tahun 2021, ekspor merupakan kegiatan mengeluarkan barang dari daerah pabean. Kegiatan ekonomi perdagangan internasional yang diwujudkan dalam kegiatan ekspor dan impor akan berpengaruh kepada perekonomi nasional suatu negara. Jika suatu negara mengekspor lebih banyak daripada impornya, negara itu memiliki surplus perdagangan. Di sisi lain, jika nilai impor lebih besar dari nilai ekspor, maka negara akan mengalami defisit neraca perdagangan, yang juga akan berdampak pada penurunan GNP (Produk Nasional Bruto) negara tersebut..
+
+Sebagaimana telah diterangkan bahwa perdagangan internasional merupakan komponen penting bagi perekonomian suatu negara. Hal ini didasarkan atas adanya keterkaitan dan ketergantungan antara satu negara dengan negara lainnya. Lada Hitam menjadi salah satu sub sektor pertanian yang selalu berkontribusi pada perdagangan internasional adalah sub  sektor  perkebunan. Salah  satu komoditas perkebunan adalah rempah-rempah.  Sejak  dulu  Indonesia  dikenal  sebagai  salah  satu  penghasil  tanaman rempah-rempah terbesar di dunia. Lada merupakan komoditas rempah utama yang memiliki volume ekspor terbesar di Indonesia. Menurut Kementerian Perdagangan 2020, komoditas yang dijuluki sebagai King of Spices tersebut  memiliki nilai ekspor 40,88 Juta USD dan komoditas kedua sebesar 37,26 Juta USD adalah cengkeh.  Sebagian besar produksi  lada Indonesia digunakan untuk  kegiatan  ekspor dan sisanya untuk konsumsi dalam negeri (Pusat Data dan Sistem Informasi Pertanian, 2018). Dalam kegiatan ekspornya.
+
+Kurs atau nilai tukar rupiah negara Indonesia ke mata uang negara Amerika Serikat  selalu mengalami perubahan. Banyak faktor yang menyebabkan perubahan tersebut, antara lain tingkat inflasi, suku bunga, keadaan ekonomi dan politik, bahkan hutang negara. Ekspor Lada Hitam merupakan salah satu yang menyebabkan perubahan kurs yang berkaitan dengan keadaan ekoniomi.
+
+### Ruang lingkup
+
+Penelitian ini mengambil data dengan subjek nilai ekspor lada hitam dari negara Indonesia ke negara Amerika Serikat. Data diambil dari badan pusat statistik selama sepuluh tahun terakhir (2012-2021). Data ini kemudian dibandingkan dengan data nilai tukar rupiah.\
+
+### Rumusan masalah
+
+Apakah ekspor lada hitam ke Amerika Serikat dapat mempengaruhi nilai tukar rupiah?
+
+### Tujuan dan manfaat penelitian
+
+Untuk mengetahui bagimana pengaruh ekspor lada hitam ke Amerika Serikat dapat mempengaruhi nilai tukar rupiah.
+
+### Package
+
+packages yang digunakan antara lain sebagai berikut:
+
+```{r}
+#| warning: false
+#| echo: true
+library(tidyverse)
+library(readxl)
+library(WDI) 
+```
+
+## Studi pustaka
+
+Jurnal berjudul *"Analisis Pengaruh Ekspor Lada Hitam Ke Negara Amerika Serikat Terhadap Nilai Tukar Rupiah Pada Tahun 2012-2021*" ini dibuat dengan merujuk pada fakta tersedianya sumber daya alam mumpuni di Indonesia, pada komoditi lada hitamsebagai aspek utama dalam ekspor sektor perkebunan dan bagaimana dampak bagi nilai tukar rupiah.
+
+Menurut data Badan Pusat Statistik (2012-2021) ditemukan bahwa ekspor tertinggi lada hitam pada tahun 2012 dengan nilai ekspor USD 121.478.800 dan ekspor lada hitam terendah pada tahun 2021 dengan nilai ekspoe USD  6.956.000 hal ini disebabkan karena dampak covid-19 yang mengakibatkan batasan terhadap eksportir dalam melakukan ekspor.
+
+Amir M. S (2004:1), ekspor adalah upaya melakukan penjualan komoditas di Indonesia kepada negara lain, dengan mengharapkan pembayaran dalam valuta asing, serta melakukan komoditi dengan memakai bahasa asing.
+
+Menurut Nopirin (2012:163) nilai tukar adalah : "Harga di dalam pertukaran dua macam mata uang yang berbeda, akan terdapat perbandingan nilai atau harga antara kedua mata uang tertentu, perbandingan nilai inilah yang disebut exchange rate".
+
+Untuk itulah, dalam menanggapi bagaimana dampak nilai ekspor lada hitam ke Amerika Serikat terhadap nilai tukar rupiah. Jurnal ini dibuat
+
+## Metode penelitian
+
+### Data Ekspor Lada Hitam Ke Negara Amerika Serikat
+
+| Tahun | Nilai Ekspor | Nilai Tukar         |
+|-------|--------------|---------------------|
+| 2012  | USD 121478,8 | Rp 1.843.592.638,5  |
+| 2013  | USD 75333,7  | Rp 1.143.283.064,63 |
+| 2014  | USD 35978,9  | Rp 546.024.781,13   |
+| 2015  | USD 77914,4  | Rp 1.182.448.413    |
+| 2016  | USD 49148,5  | Rp 745.889.923,13   |
+| 2017  | USD 28353,5  | Rp 430.299.804,38   |
+| 2018  | USD 8184,9   | Rp 124.216.088,63   |
+| 2019  | USD 7025,8   | Rp 106.625.297,25   |
+| 2020  | USD 8814,4   | Rp 133.769.538      |
+| 2021  | USD 6956     | Rp 105.565.995      |
+
+```{r}
+#| label: fig-mpg
+#| fig-cap: "Plot "
+setwd("D:/Fatur/UAS METOPEL")
+fatur<-read_excel("latihan (3).xlsx")
+library(readxl)
+plot(fatur$Y,fatur$X,xlab="Niai Ekspor",ylab="Nilai Tukar")
+abline(h=0)
+  
+  
+
+```
+
+#### Plot tanpa eror
+
+```{r}
+#| fig: "Ganerate Eror + plot"
+fatur<-read_excel("latihan (3).xlsx")
+library(readxl)
+reg<-lm(Y~X,data=fatur)
+fatur$u<-resid(reg)
+plot(fatur$Y,fatur$u,xlab="Niai Tukar",ylab="Eror")
+abline(h=0)
+  
+  
+
+```
+
+plot + Ganerate eror
+
+### Metode analisis
+
+Teknik analisis yang digunakan dalam penelitian ini adalah teknik kuantitatif dan penjabaran deskriptif. Teknik analisis kuantitatif merupakan analisis yang dilakukan dengan perhitungan angka-angka yang faktor yang mempengaruhi indeks nilai tukar rupiah terhadap nilai ekspor lada hitam ke Amerika Serikat. Metode yang dipilih adalah regresi univariat atau Ordinary Least Square (OLS) dengan 1 variabel independen. Penelitian ini merbaksud mencari hubungan antara nilai tukar dan nilai ekspor. Spesifikasi yang dilakukan adalah :
+
+$$
+y_{t}=\beta_0 + \beta_1 x_t+\mu_t
+$$ di mana $y_t$ adalah Nilai tukar rupiah terhadap USD dan $x_t$ adalah Nilai Ekspor ke negara Amerika Serikat.
+
+## Pembahasan
+
+### Pembahasan masalah
+
+| Variable  | Coeffisien | Std.Error |  t-value   |  prob   |
+|:---------:|:----------:|:---------:|:----------:|:-------:|
+| Intercept | -1.774e-07 | 8.781e-08 | -2.021e+00 |  0.078  |
+|     X     | 6.0589e-05 | 1.035e-16 | 6.367e+11  | \<2e-16 |
+
+|        R-Square        |     1     |
+|:----------------------:|:---------:|
+| **Adjusted R-Squared** |     1     |
+|    **F-Statistic**     | 4.054e+23 |
+| **Prob(F-statistik)**  | <2.2e-16  |
+
+Pengaruh Nilai Tukar Rupiah Terhadap Nilai Ekspor Ke Negara Amerika Serikat 
+
+Ekspor lada hitam berpengaruh terhadap nilai tukar. Di tunjukan dengan dilihat dari probabilitis X (nilai ekspor) yang signifikan. Nilai ekspor sering menjadi faktor yang dapat mendorong naik dan turunnya kurs mata uang suatu negara. Nilai koefisien ekspor sebesar 6.589e-05 berarti kenaikan perubahan nilai ekspor berpengaruh terhadap nilai kurs rupiah  terhadap USD . Dengan hasil ini berarti pendapatan ekspor berpengaruh positif terhadap nilai tukar.
+
+### Analisis masalah
+
+Hasil regresinya adalah
+
+```{r}
+library(readxl)
+fatur<-read_excel("latihan (3).xlsx")
+reg<-lm(Y~X,data=fatur)
+summary(reg)
+```
+
+## Kesimpulan
+
+Berdasarkan data Hasil Analisis kualitatif yang telah dilakukan, setelah diamati ekspor lada hitam ke negara Amerika Serikat berpengaruh positif terhadap nilai tukar rupiah dan Lada merupakan komoditas rempah utama yang memiliki volume ekspor terbesar di Indonesia.
+
+## Referensi
+
+*Badan Pusat Statistik*. (n.d.). Retrieved January 18, 2023, from <https://www.bps.go.id/statictable/2019/02/18/2021/ekspor-lada-hitam-menurut-negara-tujuan-utama-2012--2021.html>
+
+Brahmana, M., & Novianti, T. (2022). DAYA SAING DAN FAKTOR YANG MEMPENGARUHI EKSPOR LADA INDONESIA KE AMERIKA: PENDEKATAN REVEALED COMPARATIVE ADVANTAGE. *JSEP (Journal of Social and Agricultural Economics)*, *15*, 113. <https://doi.org/10.19184/jsep.v15i2.28675>
+
+<https://www.kaskus.co.id/thread/53d4c107902cfea31d8b45c8/kurs-rupiah-10-tahun-terakhir/>
